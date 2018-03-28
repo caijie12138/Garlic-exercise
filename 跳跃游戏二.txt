@@ -1,0 +1,30 @@
+//跳跃游戏二
+import java.util.*;
+import java.lang.*;
+
+public class Main{
+    public static int judge(int[] numbers,int[] dynamic){
+        dynamic[0] = 0;
+        int j;
+        for(int i = 0;i<numbers.length;i++)
+            for(j = 1;j <= numbers[i];j++)
+                if(dynamic[i+j] > dynamic[i]+1)
+                    dynamic[i+j] = dynamic[i]+1;
+        return dynamic[numbers.length - 1];
+    }
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+        int n = Integer.parseInt(s.nextLine());
+        String[] array = s.nextLine().split(" ");
+        int[] numbers = new int[array.length];
+        int[] dynamic = new int[101];
+        for(int i=0;i<array.length;i++){
+            numbers[i] = Integer.parseInt(array[i]);
+            dynamic[i] = 333333;//赋较大的值
+        }
+        System.out.print(judge(numbers,dynamic));
+    }
+
+}
+

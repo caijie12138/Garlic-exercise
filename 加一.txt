@@ -1,0 +1,43 @@
+//加一
+
+import java.util.*;
+import java.lang.*;
+
+public class Main{
+    public static String change(String result)
+    {//根据规则改变字符串
+        int count = 0;
+        int m = 0;
+        int i;
+        String tmp="";
+        for(i = 0;i<result.length();i = i+m)
+        {
+            m = 1;
+            for(int j = i+1;j<result.length();j++) {
+                if (result.charAt(j) == result.charAt(i))
+                    m++;
+                else
+                    break;
+            }
+            tmp=tmp+String.valueOf(m);
+            tmp = tmp+result.charAt(i);
+        }
+        return tmp;
+
+    }
+    public static String loop(int n){
+        String result = "1";
+        for(int i = 1;i<n;i++)
+        {
+            result = change(result);
+        }
+        return result;
+    }
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        while(s.hasNextInt()){
+            int n = Integer.parseInt(s.nextLine());
+            System.out.print(loop(n));
+        }
+    }
+}
